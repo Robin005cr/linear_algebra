@@ -39,10 +39,11 @@ int calcManhattanDistance(TwoDPoint a, TwoDPoint b)
 
     return manhattan_dis;
 }
-double calcAngleDeg()
+double calcAngleDeg(TwoDPoint a, TwoDPoint b)
 {
+    double angle = atan2(a.y-b.y, a.x - b.y) * 180.0 / M_PI;
 }
-double calcAngleRad()
+double calcAngleRad(TwoDPoint a, TwoDPoint b)
 {
 }
 int main()
