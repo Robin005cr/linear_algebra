@@ -22,7 +22,7 @@ public:
     {
     }
 };
-
+// Euclidian distance
 float calcDistance(TwoDPoint a, TwoDPoint b)
 {
     float distance = sqrt((a.x - b.x) ^ 2 + (a.y - b.y) ^ 2);
@@ -33,15 +33,14 @@ int calcSlope(TwoDPoint a, TwoDPoint b)
     int slope = (a.x - b.x) / (a.y - b.y);
     return slope;
 }
-int calcManhattanDistance(TwoDPoint a, TwoDPoint b)
+double calcManhattanDistance(TwoDPoint a, TwoDPoint b)
 {
-    int manhattan_dis;
-
+    double manhattan_dis = std::abs(a.x - b.x) + std::abs(a.y - b.y);
     return manhattan_dis;
 }
 double calcAngleDeg(TwoDPoint a, TwoDPoint b)
 {
-    double angle = atan2(a.y-b.y, a.x - b.y) * 180.0 / M_PI;
+    double angle = atan2(a.y-b.y, a.x - b.x) * 180.0 / M_PI;
 }
 double calcAngleRad(TwoDPoint a, TwoDPoint b)
 {
