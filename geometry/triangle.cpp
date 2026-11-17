@@ -10,29 +10,46 @@
 * I value constructive feedback and aim to continuously improve the quality of the work.
 *
 */
-#include<iostream>
+#include <cmath>
+#include <iostream>
+
 using namespace std;
+
 struct Triangle
 {
-    int x,y,z;
+    float x, y, z;
 };
 
 struct TriangleOperations
 {
-    float calcAreaWithBaseHeight(int base, int height)
+    float calcAreaWithBaseHeight(float base, float height) const
     {
-        float result;
-        return result;
+        return 0.5f * base * height;
     }
 
-    bool proveTriangle()
+    float calcAreaUsingHeronsFormula(const Triangle& triangle) const
     {
-        bool isTriangle;
-        return isTriangle;
+        const float s = (triangle.x + triangle.y + triangle.z) / 2.0f;
+        return sqrt(s * (s - triangle.x) * (s - triangle.y) * (s - triangle.z));
+    }
+
+    bool proveTriangle(const Triangle& triangle) const
+    {
+        return triangle.x + triangle.y > triangle.z &&
+               triangle.y + triangle.z > triangle.x &&
+               triangle.x + triangle.z > triangle.y &&
+               triangle.x > 0.0f && triangle.y > 0.0f && triangle.z > 0.0f;
     }
 };
+
 int main()
 {
-    Triangle T1;
+    Triangle T1{3.0f, 4.0f, 5.0f};
+    TriangleOperations ops;
+
+    cout << "Triangle valid? " << (ops.proveTriangle(T1) ? "Yes" : "No") << '\n';
+    cout << "Area using base-height: " << ops.calcAreaWithBaseHeight(4.0f, 3.0f) << '\n';
+    cout << "Area using Heron's formula: " << ops.calcAreaUsingHeronsFormula(T1) << '\n';
+
     return 0;
 }
